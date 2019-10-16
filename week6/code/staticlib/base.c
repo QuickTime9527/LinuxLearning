@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <time.h>
+#include <math.h>
+#include <stdlib.h>
 void showarray(int *a,int n)
 {
   int i;
@@ -8,6 +11,7 @@ void showarray(int *a,int n)
 void initarray(int * a,int n)
 {
   int i;
+  srand(time(NULL)); //zhongzi
   for(i=0;i<n;i++)
-    scanf("%d",&a[i]);
+    a[i]= rand()%1000+1000;
 }
