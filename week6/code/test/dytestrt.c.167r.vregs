@@ -1,0 +1,801 @@
+
+;; Function main (main, funcdef_no=2, decl_uid=3862, cgraph_uid=2)
+
+(note 1 0 3 NOTE_INSN_DELETED)
+;; basic block 2, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 0, next block 4, flags: (NEW, REACHABLE, RTL)
+;;  pred:       ENTRY (FALLTHRU)
+(note 3 1 2 2 [bb 2] NOTE_INSN_BASIC_BLOCK)
+(note 2 3 5 2 NOTE_INSN_FUNCTION_BEG)
+(insn 5 2 6 2 (set (reg:DI 5 di)
+        (const_int 0 [0])) dytestrt.c:16 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 6 5 7 2 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("time") [flags 0x41]  <function_decl 0x7fa158458700 time>) [0 time S1 A8])
+            (const_int 0 [0]))) dytestrt.c:16 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+        (nil)))
+(insn 7 6 8 2 (set (reg:DI 59 [ D.3910 ])
+        (reg:DI 0 ax)) dytestrt.c:16 87 {*movdi_internal_rex64}
+     (nil))
+(insn 8 7 9 2 (set (reg:SI 60 [ D.3911 ])
+        (subreg:SI (reg:DI 59 [ D.3910 ]) 0)) dytestrt.c:16 89 {*movsi_internal}
+     (nil))
+(insn 9 8 10 2 (set (reg:SI 5 di)
+        (reg:SI 60 [ D.3911 ])) dytestrt.c:16 89 {*movsi_internal}
+     (nil))
+(call_insn 10 9 11 2 (call (mem:QI (symbol_ref:DI ("srand") [flags 0x41]  <function_decl 0x7fa15843d000 srand>) [0 srand S1 A8])
+        (const_int 0 [0])) dytestrt.c:16 656 {*call}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list:REG_BR_PRED (use (reg:SI 5 di))
+        (nil)))
+(insn 11 10 12 2 (set (mem/c:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 i+0 S4 A32])
+        (const_int 0 [0])) dytestrt.c:17 89 {*movsi_internal}
+     (nil))
+(jump_insn 12 11 13 2 (set (pc)
+        (label_ref 29)) dytestrt.c:17 650 {jump}
+     (nil)
+ -> 29)
+;;  succ:       5
+
+(barrier 13 12 31)
+;; basic block 4, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 2, next block 5, flags: (NEW, REACHABLE, RTL)
+;;  pred:       5
+(code_label 31 13 14 4 3 "" [1 uses])
+(note 14 31 15 4 [bb 4] NOTE_INSN_BASIC_BLOCK)
+(call_insn 15 14 16 4 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("rand") [flags 0x41]  <function_decl 0x7fa158422f00 rand>) [0 rand S1 A8])
+            (const_int 0 [0]))) dytestrt.c:18 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 16 15 17 4 (set (reg:SI 61 [ D.3912 ])
+        (reg:SI 0 ax)) dytestrt.c:18 89 {*movsi_internal}
+     (nil))
+(insn 17 16 18 4 (set (reg:SI 83)
+        (const_int 274877907 [0x10624dd3])) dytestrt.c:18 89 {*movsi_internal}
+     (nil))
+(insn 18 17 19 4 (parallel [
+            (set (reg:SI 82)
+                (truncate:SI (lshiftrt:DI (mult:DI (sign_extend:DI (reg:SI 61 [ D.3912 ]))
+                            (sign_extend:DI (reg:SI 83)))
+                        (const_int 32 [0x20]))))
+            (clobber (scratch:SI))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:18 359 {*smulsi3_highpart_1}
+     (nil))
+(insn 19 18 20 4 (parallel [
+            (set (reg:SI 84)
+                (ashiftrt:SI (reg:SI 82)
+                    (const_int 6 [0x6])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:18 546 {*ashrsi3_1}
+     (nil))
+(insn 20 19 21 4 (parallel [
+            (set (reg:SI 85)
+                (ashiftrt:SI (reg:SI 61 [ D.3912 ])
+                    (const_int 31 [0x1f])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:18 539 {ashrsi3_cvt}
+     (nil))
+(insn 21 20 22 4 (parallel [
+            (set (reg:SI 62 [ D.3912 ])
+                (minus:SI (reg:SI 84)
+                    (reg:SI 85)))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:18 309 {*subsi_1}
+     (expr_list:REG_EQUAL (div:SI (reg:SI 61 [ D.3912 ])
+            (const_int 1000 [0x3e8]))
+        (nil)))
+(insn 22 21 23 4 (parallel [
+            (set (reg:SI 86)
+                (mult:SI (reg:SI 62 [ D.3912 ])
+                    (const_int 1000 [0x3e8])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:18 344 {*mulsi3_1}
+     (nil))
+(insn 23 22 24 4 (parallel [
+            (set (reg:SI 62 [ D.3912 ])
+                (minus:SI (reg:SI 61 [ D.3912 ])
+                    (reg:SI 86)))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:18 309 {*subsi_1}
+     (nil))
+(insn 24 23 25 4 (parallel [
+            (set (reg:SI 63 [ D.3912 ])
+                (plus:SI (reg:SI 62 [ D.3912 ])
+                    (const_int 1000 [0x3e8])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:18 273 {*addsi_1}
+     (nil))
+(insn 25 24 26 4 (set (reg:SI 88)
+        (mem/c:SI (plus:DI (reg/f:DI 20 frame)
+                (const_int -4 [0xfffffffffffffffc])) [0 i+0 S4 A32])) dytestrt.c:18 89 {*movsi_internal}
+     (nil))
+(insn 26 25 27 4 (set (reg:DI 87)
+        (sign_extend:DI (reg:SI 88))) dytestrt.c:18 149 {*extendsidi2_rex64}
+     (nil))
+(insn 27 26 28 4 (set (mem/j:SI (plus:DI (plus:DI (mult:DI (reg:DI 87)
+                        (const_int 4 [0x4]))
+                    (reg/f:DI 20 frame))
+                (const_int -80 [0xffffffffffffffb0])) [0 a S4 A32])
+        (reg:SI 63 [ D.3912 ])) dytestrt.c:18 89 {*movsi_internal}
+     (nil))
+(insn 28 27 29 4 (parallel [
+            (set (mem/c:SI (plus:DI (reg/f:DI 20 frame)
+                        (const_int -4 [0xfffffffffffffffc])) [0 i+0 S4 A32])
+                (plus:SI (mem/c:SI (plus:DI (reg/f:DI 20 frame)
+                            (const_int -4 [0xfffffffffffffffc])) [0 i+0 S4 A32])
+                    (const_int 1 [0x1])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:17 273 {*addsi_1}
+     (nil))
+;;  succ:       5 (FALLTHRU,DFS_BACK)
+
+;; basic block 5, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 4, next block 6, flags: (NEW, REACHABLE, RTL)
+;;  pred:       2
+;;              4 (FALLTHRU,DFS_BACK)
+(code_label 29 28 30 5 2 "" [1 uses])
+(note 30 29 32 5 [bb 5] NOTE_INSN_BASIC_BLOCK)
+(insn 32 30 33 5 (set (reg:CCGC 17 flags)
+        (compare:CCGC (mem/c:SI (plus:DI (reg/f:DI 20 frame)
+                    (const_int -4 [0xfffffffffffffffc])) [0 i+0 S4 A32])
+            (const_int 4 [0x4]))) dytestrt.c:17 7 {*cmpsi_1}
+     (nil))
+(jump_insn 33 32 34 5 (set (pc)
+        (if_then_else (le (reg:CCGC 17 flags)
+                (const_int 0 [0]))
+            (label_ref 31)
+            (pc))) dytestrt.c:17 612 {*jcc_1}
+     (nil)
+ -> 31)
+;;  succ:       4
+;;              6 (FALLTHRU)
+
+;; basic block 6, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 5, next block 7, flags: (NEW, REACHABLE, RTL)
+;;  pred:       5 (FALLTHRU)
+(note 34 33 35 6 [bb 6] NOTE_INSN_BASIC_BLOCK)
+(insn 35 34 36 6 (set (reg:SI 4 si)
+        (const_int 1 [0x1])) dytestrt.c:22 89 {*movsi_internal}
+     (nil))
+(insn 36 35 37 6 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC0") [flags 0x2]  <var_decl 0x7fa1581437b8 *.LC0>)) dytestrt.c:22 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 37 36 38 6 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlopen") [flags 0x41]  <function_decl 0x7fa158469400 dlopen>) [0 dlopen S1 A8])
+            (const_int 0 [0]))) dytestrt.c:22 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+        (expr_list:REG_BR_PRED (use (reg:SI 4 si))
+            (nil))))
+(insn 38 37 39 6 (set (reg:DI 89)
+        (reg:DI 0 ax)) dytestrt.c:22 87 {*movdi_internal_rex64}
+     (nil))
+(insn 39 38 40 6 (set (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -16 [0xfffffffffffffff0])) [0 hd+0 S8 A64])
+        (reg:DI 89)) dytestrt.c:22 87 {*movdi_internal_rex64}
+     (nil))
+(insn 40 39 41 6 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                    (const_int -16 [0xfffffffffffffff0])) [0 hd+0 S8 A64])
+            (const_int 0 [0]))) dytestrt.c:23 4 {*cmpdi_ccno_1}
+     (nil))
+(jump_insn 41 40 42 6 (set (pc)
+        (if_then_else (ne (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 54)
+            (pc))) dytestrt.c:23 612 {*jcc_1}
+     (nil)
+ -> 54)
+;;  succ:       7 (FALLTHRU)
+;;              8
+
+;; basic block 7, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 6, next block 8, flags: (NEW, REACHABLE, RTL)
+;;  pred:       6 (FALLTHRU)
+(note 42 41 43 7 [bb 7] NOTE_INSN_BASIC_BLOCK)
+(call_insn 43 42 44 7 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:24 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 44 43 45 7 (set (reg/f:DI 64 [ D.3913 ])
+        (reg:DI 0 ax)) dytestrt.c:24 87 {*movdi_internal_rex64}
+     (nil))
+(insn 45 44 46 7 (set (reg/f:DI 65 [ stderr.0 ])
+        (mem/f/c:DI (symbol_ref:DI ("stderr") [flags 0x40]  <var_decl 0x7fa1583d7980 stderr>) [0 stderr+0 S8 A64])) dytestrt.c:24 87 {*movdi_internal_rex64}
+     (nil))
+(insn 46 45 47 7 (set (reg:DI 1 dx)
+        (reg/f:DI 64 [ D.3913 ])) dytestrt.c:24 87 {*movdi_internal_rex64}
+     (nil))
+(insn 47 46 48 7 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7fa158143850 *.LC1>)) dytestrt.c:24 87 {*movdi_internal_rex64}
+     (nil))
+(insn 48 47 49 7 (set (reg:DI 5 di)
+        (reg/f:DI 65 [ stderr.0 ])) dytestrt.c:24 87 {*movdi_internal_rex64}
+     (nil))
+(insn 49 48 50 7 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:24 91 {*movqi_internal}
+     (nil))
+(call_insn 50 49 51 7 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("fprintf") [flags 0x41]  <function_decl 0x7fa15830b900 fprintf>) [0 __builtin_fprintf S1 A8])
+            (const_int 0 [0]))) dytestrt.c:24 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+                (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 1 dx))
+                    (nil))))))
+(insn 51 50 52 7 (set (reg:SI 5 di)
+        (const_int 1 [0x1])) dytestrt.c:25 89 {*movsi_internal}
+     (nil))
+(call_insn 52 51 53 7 (call (mem:QI (symbol_ref:DI ("exit") [flags 0x41]  <function_decl 0x7fa158323f00 exit>) [0 __builtin_exit S1 A8])
+        (const_int 0 [0])) dytestrt.c:25 656 {*call}
+     (expr_list:REG_NORETURN (const_int 0 [0])
+        (expr_list:REG_EH_REGION (const_int 0 [0])
+            (nil)))
+    (expr_list:REG_BR_PRED (use (reg:SI 5 di))
+        (nil)))
+;;  succ:      
+
+(barrier 53 52 54)
+;; basic block 8, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 7, next block 9, flags: (NEW, REACHABLE, RTL)
+;;  pred:       6
+(code_label 54 53 55 8 4 "" [1 uses])
+(note 55 54 56 8 [bb 8] NOTE_INSN_BASIC_BLOCK)
+(insn 56 55 57 8 (set (reg:DI 90)
+        (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -16 [0xfffffffffffffff0])) [0 hd+0 S8 A64])) dytestrt.c:27 87 {*movdi_internal_rex64}
+     (nil))
+(insn 57 56 58 8 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC2") [flags 0x2]  <var_decl 0x7fa1581438e8 *.LC2>)) dytestrt.c:27 87 {*movdi_internal_rex64}
+     (nil))
+(insn 58 57 59 8 (set (reg:DI 5 di)
+        (reg:DI 90)) dytestrt.c:27 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 59 58 60 8 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlsym") [flags 0x41]  <function_decl 0x7fa158469600 dlsym>) [0 dlsym S1 A8])
+            (const_int 0 [0]))) dytestrt.c:27 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+            (nil))))
+(insn 60 59 61 8 (set (reg/f:DI 66 [ D.3914 ])
+        (reg:DI 0 ax)) dytestrt.c:27 87 {*movdi_internal_rex64}
+     (nil))
+(insn 61 60 62 8 (set (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 f1+0 S8 A64])
+        (reg/f:DI 66 [ D.3914 ])) dytestrt.c:27 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 62 61 63 8 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:28 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 63 62 64 8 (set (reg:DI 91)
+        (reg:DI 0 ax)) dytestrt.c:28 87 {*movdi_internal_rex64}
+     (nil))
+(insn 64 63 65 8 (set (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -32 [0xffffffffffffffe0])) [0 error+0 S8 A64])
+        (reg:DI 91)) dytestrt.c:28 87 {*movdi_internal_rex64}
+     (nil))
+(insn 65 64 66 8 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                    (const_int -32 [0xffffffffffffffe0])) [0 error+0 S8 A64])
+            (const_int 0 [0]))) dytestrt.c:28 4 {*cmpdi_ccno_1}
+     (nil))
+(jump_insn 66 65 67 8 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 79)
+            (pc))) dytestrt.c:28 612 {*jcc_1}
+     (nil)
+ -> 79)
+;;  succ:       9 (FALLTHRU)
+;;              10
+
+;; basic block 9, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 8, next block 10, flags: (NEW, REACHABLE, RTL)
+;;  pred:       8 (FALLTHRU)
+(note 67 66 68 9 [bb 9] NOTE_INSN_BASIC_BLOCK)
+(call_insn 68 67 69 9 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:29 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 69 68 70 9 (set (reg/f:DI 67 [ D.3913 ])
+        (reg:DI 0 ax)) dytestrt.c:29 87 {*movdi_internal_rex64}
+     (nil))
+(insn 70 69 71 9 (set (reg/f:DI 68 [ stderr.1 ])
+        (mem/f/c:DI (symbol_ref:DI ("stderr") [flags 0x40]  <var_decl 0x7fa1583d7980 stderr>) [0 stderr+0 S8 A64])) dytestrt.c:29 87 {*movdi_internal_rex64}
+     (nil))
+(insn 71 70 72 9 (set (reg:DI 1 dx)
+        (reg/f:DI 67 [ D.3913 ])) dytestrt.c:29 87 {*movdi_internal_rex64}
+     (nil))
+(insn 72 71 73 9 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7fa158143850 *.LC1>)) dytestrt.c:29 87 {*movdi_internal_rex64}
+     (nil))
+(insn 73 72 74 9 (set (reg:DI 5 di)
+        (reg/f:DI 68 [ stderr.1 ])) dytestrt.c:29 87 {*movdi_internal_rex64}
+     (nil))
+(insn 74 73 75 9 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:29 91 {*movqi_internal}
+     (nil))
+(call_insn 75 74 76 9 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("fprintf") [flags 0x41]  <function_decl 0x7fa15830b900 fprintf>) [0 __builtin_fprintf S1 A8])
+            (const_int 0 [0]))) dytestrt.c:29 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+                (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 1 dx))
+                    (nil))))))
+(insn 76 75 77 9 (set (reg:SI 5 di)
+        (const_int 1 [0x1])) dytestrt.c:30 89 {*movsi_internal}
+     (nil))
+(call_insn 77 76 78 9 (call (mem:QI (symbol_ref:DI ("exit") [flags 0x41]  <function_decl 0x7fa158323f00 exit>) [0 __builtin_exit S1 A8])
+        (const_int 0 [0])) dytestrt.c:30 656 {*call}
+     (expr_list:REG_NORETURN (const_int 0 [0])
+        (expr_list:REG_EH_REGION (const_int 0 [0])
+            (nil)))
+    (expr_list:REG_BR_PRED (use (reg:SI 5 di))
+        (nil)))
+;;  succ:      
+
+(barrier 78 77 79)
+;; basic block 10, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 9, next block 11, flags: (NEW, REACHABLE, RTL)
+;;  pred:       8
+(code_label 79 78 80 10 5 "" [1 uses])
+(note 80 79 81 10 [bb 10] NOTE_INSN_BASIC_BLOCK)
+(insn 81 80 82 10 (set (reg:DI 92)
+        (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -16 [0xfffffffffffffff0])) [0 hd+0 S8 A64])) dytestrt.c:32 87 {*movdi_internal_rex64}
+     (nil))
+(insn 82 81 83 10 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC3") [flags 0x2]  <var_decl 0x7fa158143980 *.LC3>)) dytestrt.c:32 87 {*movdi_internal_rex64}
+     (nil))
+(insn 83 82 84 10 (set (reg:DI 5 di)
+        (reg:DI 92)) dytestrt.c:32 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 84 83 85 10 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlsym") [flags 0x41]  <function_decl 0x7fa158469600 dlsym>) [0 dlsym S1 A8])
+            (const_int 0 [0]))) dytestrt.c:32 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+            (nil))))
+(insn 85 84 86 10 (set (reg/f:DI 69 [ D.3914 ])
+        (reg:DI 0 ax)) dytestrt.c:32 87 {*movdi_internal_rex64}
+     (nil))
+(insn 86 85 87 10 (set (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -40 [0xffffffffffffffd8])) [0 f2+0 S8 A64])
+        (reg/f:DI 69 [ D.3914 ])) dytestrt.c:32 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 87 86 88 10 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:33 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 88 87 89 10 (set (reg:DI 93)
+        (reg:DI 0 ax)) dytestrt.c:33 87 {*movdi_internal_rex64}
+     (nil))
+(insn 89 88 90 10 (set (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -32 [0xffffffffffffffe0])) [0 error+0 S8 A64])
+        (reg:DI 93)) dytestrt.c:33 87 {*movdi_internal_rex64}
+     (nil))
+(insn 90 89 91 10 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                    (const_int -32 [0xffffffffffffffe0])) [0 error+0 S8 A64])
+            (const_int 0 [0]))) dytestrt.c:33 4 {*cmpdi_ccno_1}
+     (nil))
+(jump_insn 91 90 92 10 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 104)
+            (pc))) dytestrt.c:33 612 {*jcc_1}
+     (nil)
+ -> 104)
+;;  succ:       11 (FALLTHRU)
+;;              12
+
+;; basic block 11, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 10, next block 12, flags: (NEW, REACHABLE, RTL)
+;;  pred:       10 (FALLTHRU)
+(note 92 91 93 11 [bb 11] NOTE_INSN_BASIC_BLOCK)
+(call_insn 93 92 94 11 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:34 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 94 93 95 11 (set (reg/f:DI 70 [ D.3913 ])
+        (reg:DI 0 ax)) dytestrt.c:34 87 {*movdi_internal_rex64}
+     (nil))
+(insn 95 94 96 11 (set (reg/f:DI 71 [ stderr.2 ])
+        (mem/f/c:DI (symbol_ref:DI ("stderr") [flags 0x40]  <var_decl 0x7fa1583d7980 stderr>) [0 stderr+0 S8 A64])) dytestrt.c:34 87 {*movdi_internal_rex64}
+     (nil))
+(insn 96 95 97 11 (set (reg:DI 1 dx)
+        (reg/f:DI 70 [ D.3913 ])) dytestrt.c:34 87 {*movdi_internal_rex64}
+     (nil))
+(insn 97 96 98 11 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7fa158143850 *.LC1>)) dytestrt.c:34 87 {*movdi_internal_rex64}
+     (nil))
+(insn 98 97 99 11 (set (reg:DI 5 di)
+        (reg/f:DI 71 [ stderr.2 ])) dytestrt.c:34 87 {*movdi_internal_rex64}
+     (nil))
+(insn 99 98 100 11 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:34 91 {*movqi_internal}
+     (nil))
+(call_insn 100 99 101 11 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("fprintf") [flags 0x41]  <function_decl 0x7fa15830b900 fprintf>) [0 __builtin_fprintf S1 A8])
+            (const_int 0 [0]))) dytestrt.c:34 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+                (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 1 dx))
+                    (nil))))))
+(insn 101 100 102 11 (set (reg:SI 5 di)
+        (const_int 1 [0x1])) dytestrt.c:35 89 {*movsi_internal}
+     (nil))
+(call_insn 102 101 103 11 (call (mem:QI (symbol_ref:DI ("exit") [flags 0x41]  <function_decl 0x7fa158323f00 exit>) [0 __builtin_exit S1 A8])
+        (const_int 0 [0])) dytestrt.c:35 656 {*call}
+     (expr_list:REG_NORETURN (const_int 0 [0])
+        (expr_list:REG_EH_REGION (const_int 0 [0])
+            (nil)))
+    (expr_list:REG_BR_PRED (use (reg:SI 5 di))
+        (nil)))
+;;  succ:      
+
+(barrier 103 102 104)
+;; basic block 12, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 11, next block 13, flags: (NEW, REACHABLE, RTL)
+;;  pred:       10
+(code_label 104 103 105 12 6 "" [1 uses])
+(note 105 104 106 12 [bb 12] NOTE_INSN_BASIC_BLOCK)
+(insn 106 105 107 12 (set (reg:DI 94)
+        (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -16 [0xfffffffffffffff0])) [0 hd+0 S8 A64])) dytestrt.c:37 87 {*movdi_internal_rex64}
+     (nil))
+(insn 107 106 108 12 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC4") [flags 0x2]  <var_decl 0x7fa158143a18 *.LC4>)) dytestrt.c:37 87 {*movdi_internal_rex64}
+     (nil))
+(insn 108 107 109 12 (set (reg:DI 5 di)
+        (reg:DI 94)) dytestrt.c:37 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 109 108 110 12 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlsym") [flags 0x41]  <function_decl 0x7fa158469600 dlsym>) [0 dlsym S1 A8])
+            (const_int 0 [0]))) dytestrt.c:37 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+            (nil))))
+(insn 110 109 111 12 (set (reg/f:DI 72 [ D.3914 ])
+        (reg:DI 0 ax)) dytestrt.c:37 87 {*movdi_internal_rex64}
+     (nil))
+(insn 111 110 112 12 (set (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -48 [0xffffffffffffffd0])) [0 f3+0 S8 A64])
+        (reg/f:DI 72 [ D.3914 ])) dytestrt.c:37 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 112 111 113 12 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:38 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 113 112 114 12 (set (reg:DI 95)
+        (reg:DI 0 ax)) dytestrt.c:38 87 {*movdi_internal_rex64}
+     (nil))
+(insn 114 113 115 12 (set (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -32 [0xffffffffffffffe0])) [0 error+0 S8 A64])
+        (reg:DI 95)) dytestrt.c:38 87 {*movdi_internal_rex64}
+     (nil))
+(insn 115 114 116 12 (set (reg:CCZ 17 flags)
+        (compare:CCZ (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                    (const_int -32 [0xffffffffffffffe0])) [0 error+0 S8 A64])
+            (const_int 0 [0]))) dytestrt.c:38 4 {*cmpdi_ccno_1}
+     (nil))
+(jump_insn 116 115 117 12 (set (pc)
+        (if_then_else (eq (reg:CCZ 17 flags)
+                (const_int 0 [0]))
+            (label_ref 129)
+            (pc))) dytestrt.c:38 612 {*jcc_1}
+     (nil)
+ -> 129)
+;;  succ:       13 (FALLTHRU)
+;;              14
+
+;; basic block 13, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 12, next block 14, flags: (NEW, REACHABLE, RTL)
+;;  pred:       12 (FALLTHRU)
+(note 117 116 118 13 [bb 13] NOTE_INSN_BASIC_BLOCK)
+(call_insn 118 117 119 13 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:39 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 119 118 120 13 (set (reg/f:DI 73 [ D.3913 ])
+        (reg:DI 0 ax)) dytestrt.c:39 87 {*movdi_internal_rex64}
+     (nil))
+(insn 120 119 121 13 (set (reg/f:DI 74 [ stderr.3 ])
+        (mem/f/c:DI (symbol_ref:DI ("stderr") [flags 0x40]  <var_decl 0x7fa1583d7980 stderr>) [0 stderr+0 S8 A64])) dytestrt.c:39 87 {*movdi_internal_rex64}
+     (nil))
+(insn 121 120 122 13 (set (reg:DI 1 dx)
+        (reg/f:DI 73 [ D.3913 ])) dytestrt.c:39 87 {*movdi_internal_rex64}
+     (nil))
+(insn 122 121 123 13 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7fa158143850 *.LC1>)) dytestrt.c:39 87 {*movdi_internal_rex64}
+     (nil))
+(insn 123 122 124 13 (set (reg:DI 5 di)
+        (reg/f:DI 74 [ stderr.3 ])) dytestrt.c:39 87 {*movdi_internal_rex64}
+     (nil))
+(insn 124 123 125 13 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:39 91 {*movqi_internal}
+     (nil))
+(call_insn 125 124 126 13 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("fprintf") [flags 0x41]  <function_decl 0x7fa15830b900 fprintf>) [0 __builtin_fprintf S1 A8])
+            (const_int 0 [0]))) dytestrt.c:39 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+                (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 1 dx))
+                    (nil))))))
+(insn 126 125 127 13 (set (reg:SI 5 di)
+        (const_int 1 [0x1])) dytestrt.c:40 89 {*movsi_internal}
+     (nil))
+(call_insn 127 126 128 13 (call (mem:QI (symbol_ref:DI ("exit") [flags 0x41]  <function_decl 0x7fa158323f00 exit>) [0 __builtin_exit S1 A8])
+        (const_int 0 [0])) dytestrt.c:40 656 {*call}
+     (expr_list:REG_NORETURN (const_int 0 [0])
+        (expr_list:REG_EH_REGION (const_int 0 [0])
+            (nil)))
+    (expr_list:REG_BR_PRED (use (reg:SI 5 di))
+        (nil)))
+;;  succ:      
+
+(barrier 128 127 129)
+;; basic block 14, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 13, next block 15, flags: (NEW, REACHABLE, RTL)
+;;  pred:       12
+(code_label 129 128 130 14 7 "" [1 uses])
+(note 130 129 131 14 [bb 14] NOTE_INSN_BASIC_BLOCK)
+(insn 131 130 132 14 (parallel [
+            (set (reg:DI 96)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -80 [0xffffffffffffffb0])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:43 274 {*adddi_1}
+     (nil))
+(insn 132 131 133 14 (set (reg/f:DI 97)
+        (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -24 [0xffffffffffffffe8])) [0 f1+0 S8 A64])) dytestrt.c:43 87 {*movdi_internal_rex64}
+     (nil))
+(insn 133 132 134 14 (set (reg:SI 4 si)
+        (const_int 5 [0x5])) dytestrt.c:43 89 {*movsi_internal}
+     (nil))
+(insn 134 133 135 14 (set (reg:DI 5 di)
+        (reg:DI 96)) dytestrt.c:43 87 {*movdi_internal_rex64}
+     (nil))
+(insn 135 134 136 14 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:43 91 {*movqi_internal}
+     (nil))
+(call_insn 136 135 137 14 (call (mem:QI (reg/f:DI 97) [0 *f1_13 S1 A8])
+        (const_int 0 [0])) dytestrt.c:43 656 {*call}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_BR_PRED (use (reg:SI 4 si))
+                (nil)))))
+(insn 137 136 138 14 (parallel [
+            (set (reg:DI 98)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -80 [0xffffffffffffffb0])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:44 274 {*adddi_1}
+     (nil))
+(insn 138 137 139 14 (set (reg/f:DI 99)
+        (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -40 [0xffffffffffffffd8])) [0 f2+0 S8 A64])) dytestrt.c:44 87 {*movdi_internal_rex64}
+     (nil))
+(insn 139 138 140 14 (set (reg:SI 4 si)
+        (const_int 5 [0x5])) dytestrt.c:44 89 {*movsi_internal}
+     (nil))
+(insn 140 139 141 14 (set (reg:DI 5 di)
+        (reg:DI 98)) dytestrt.c:44 87 {*movdi_internal_rex64}
+     (nil))
+(insn 141 140 142 14 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:44 91 {*movqi_internal}
+     (nil))
+(call_insn 142 141 143 14 (set (reg:SI 0 ax)
+        (call (mem:QI (reg/f:DI 99) [0 *f2_18 S1 A8])
+            (const_int 0 [0]))) dytestrt.c:44 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_BR_PRED (use (reg:SI 4 si))
+                (nil)))))
+(insn 143 142 144 14 (set (reg:SI 75 [ D.3912 ])
+        (reg:SI 0 ax)) dytestrt.c:44 89 {*movsi_internal}
+     (nil))
+(insn 144 143 145 14 (set (reg:SI 4 si)
+        (reg:SI 75 [ D.3912 ])) dytestrt.c:44 89 {*movsi_internal}
+     (nil))
+(insn 145 144 146 14 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC5") [flags 0x2]  <var_decl 0x7fa158143ab0 *.LC5>)) dytestrt.c:44 87 {*movdi_internal_rex64}
+     (nil))
+(insn 146 145 147 14 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:44 91 {*movqi_internal}
+     (nil))
+(call_insn 147 146 148 14 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("printf") [flags 0x41]  <function_decl 0x7fa15830ff00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 0 [0]))) dytestrt.c:44 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_BR_PRED (use (reg:SI 4 si))
+                (nil)))))
+(insn 148 147 149 14 (parallel [
+            (set (reg:DI 100)
+                (plus:DI (reg/f:DI 20 frame)
+                    (const_int -80 [0xffffffffffffffb0])))
+            (clobber (reg:CC 17 flags))
+        ]) dytestrt.c:45 274 {*adddi_1}
+     (nil))
+(insn 149 148 150 14 (set (reg/f:DI 101)
+        (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -48 [0xffffffffffffffd0])) [0 f3+0 S8 A64])) dytestrt.c:45 87 {*movdi_internal_rex64}
+     (nil))
+(insn 150 149 151 14 (set (reg:SI 4 si)
+        (const_int 5 [0x5])) dytestrt.c:45 89 {*movsi_internal}
+     (nil))
+(insn 151 150 152 14 (set (reg:DI 5 di)
+        (reg:DI 100)) dytestrt.c:45 87 {*movdi_internal_rex64}
+     (nil))
+(insn 152 151 153 14 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:45 91 {*movqi_internal}
+     (nil))
+(call_insn 153 152 154 14 (set (reg:SI 0 ax)
+        (call (mem:QI (reg/f:DI 101) [0 *f3_23 S1 A8])
+            (const_int 0 [0]))) dytestrt.c:45 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_BR_PRED (use (reg:SI 4 si))
+                (nil)))))
+(insn 154 153 155 14 (set (reg:SI 76 [ D.3912 ])
+        (reg:SI 0 ax)) dytestrt.c:45 89 {*movsi_internal}
+     (nil))
+(insn 155 154 156 14 (set (reg:SI 4 si)
+        (reg:SI 76 [ D.3912 ])) dytestrt.c:45 89 {*movsi_internal}
+     (nil))
+(insn 156 155 157 14 (set (reg:DI 5 di)
+        (symbol_ref/f:DI ("*.LC6") [flags 0x2]  <var_decl 0x7fa158143b48 *.LC6>)) dytestrt.c:45 87 {*movdi_internal_rex64}
+     (nil))
+(insn 157 156 158 14 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:45 91 {*movqi_internal}
+     (nil))
+(call_insn 158 157 159 14 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("printf") [flags 0x41]  <function_decl 0x7fa15830ff00 printf>) [0 __builtin_printf S1 A8])
+            (const_int 0 [0]))) dytestrt.c:45 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_BR_PRED (use (reg:SI 4 si))
+                (nil)))))
+(insn 159 158 160 14 (set (reg:DI 102)
+        (mem/f/c:DI (plus:DI (reg/f:DI 20 frame)
+                (const_int -16 [0xfffffffffffffff0])) [0 hd+0 S8 A64])) dytestrt.c:46 87 {*movdi_internal_rex64}
+     (nil))
+(insn 160 159 161 14 (set (reg:DI 5 di)
+        (reg:DI 102)) dytestrt.c:46 87 {*movdi_internal_rex64}
+     (nil))
+(call_insn 161 160 162 14 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlclose") [flags 0x41]  <function_decl 0x7fa158469500 dlclose>) [0 dlclose S1 A8])
+            (const_int 0 [0]))) dytestrt.c:46 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+        (nil)))
+(insn 162 161 163 14 (set (reg:SI 77 [ D.3912 ])
+        (reg:SI 0 ax)) dytestrt.c:46 89 {*movsi_internal}
+     (nil))
+(insn 163 162 164 14 (set (reg:CCGOC 17 flags)
+        (compare:CCGOC (reg:SI 77 [ D.3912 ])
+            (const_int 0 [0]))) dytestrt.c:46 3 {*cmpsi_ccno_1}
+     (nil))
+(jump_insn 164 163 165 14 (set (pc)
+        (if_then_else (ge (reg:CCGOC 17 flags)
+                (const_int 0 [0]))
+            (label_ref 177)
+            (pc))) dytestrt.c:46 612 {*jcc_1}
+     (nil)
+ -> 177)
+;;  succ:       15 (FALLTHRU)
+;;              16
+
+;; basic block 15, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 14, next block 16, flags: (NEW, REACHABLE, RTL)
+;;  pred:       14 (FALLTHRU)
+(note 165 164 166 15 [bb 15] NOTE_INSN_BASIC_BLOCK)
+(call_insn 166 165 167 15 (set (reg:DI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("dlerror") [flags 0x41]  <function_decl 0x7fa158469700 dlerror>) [0 dlerror S1 A8])
+            (const_int 0 [0]))) dytestrt.c:47 663 {*call_value}
+     (expr_list:REG_EH_REGION (const_int 0 [0])
+        (nil))
+    (nil))
+(insn 167 166 168 15 (set (reg/f:DI 78 [ D.3913 ])
+        (reg:DI 0 ax)) dytestrt.c:47 87 {*movdi_internal_rex64}
+     (nil))
+(insn 168 167 169 15 (set (reg/f:DI 79 [ stderr.4 ])
+        (mem/f/c:DI (symbol_ref:DI ("stderr") [flags 0x40]  <var_decl 0x7fa1583d7980 stderr>) [0 stderr+0 S8 A64])) dytestrt.c:47 87 {*movdi_internal_rex64}
+     (nil))
+(insn 169 168 170 15 (set (reg:DI 1 dx)
+        (reg/f:DI 78 [ D.3913 ])) dytestrt.c:47 87 {*movdi_internal_rex64}
+     (nil))
+(insn 170 169 171 15 (set (reg:DI 4 si)
+        (symbol_ref/f:DI ("*.LC1") [flags 0x2]  <var_decl 0x7fa158143850 *.LC1>)) dytestrt.c:47 87 {*movdi_internal_rex64}
+     (nil))
+(insn 171 170 172 15 (set (reg:DI 5 di)
+        (reg/f:DI 79 [ stderr.4 ])) dytestrt.c:47 87 {*movdi_internal_rex64}
+     (nil))
+(insn 172 171 173 15 (set (reg:QI 0 ax)
+        (const_int 0 [0])) dytestrt.c:47 91 {*movqi_internal}
+     (nil))
+(call_insn 173 172 174 15 (set (reg:SI 0 ax)
+        (call (mem:QI (symbol_ref:DI ("fprintf") [flags 0x41]  <function_decl 0x7fa15830b900 fprintf>) [0 __builtin_fprintf S1 A8])
+            (const_int 0 [0]))) dytestrt.c:47 663 {*call_value}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:QI 0 ax))
+        (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 5 di))
+            (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 4 si))
+                (expr_list:REG_FRAME_RELATED_EXPR (use (reg:DI 1 dx))
+                    (nil))))))
+(insn 174 173 175 15 (set (reg:SI 5 di)
+        (const_int 1 [0x1])) dytestrt.c:48 89 {*movsi_internal}
+     (nil))
+(call_insn 175 174 176 15 (call (mem:QI (symbol_ref:DI ("exit") [flags 0x41]  <function_decl 0x7fa158323f00 exit>) [0 __builtin_exit S1 A8])
+        (const_int 0 [0])) dytestrt.c:48 656 {*call}
+     (expr_list:REG_NORETURN (const_int 0 [0])
+        (expr_list:REG_EH_REGION (const_int 0 [0])
+            (nil)))
+    (expr_list:REG_BR_PRED (use (reg:SI 5 di))
+        (nil)))
+;;  succ:      
+
+(barrier 176 175 177)
+;; basic block 16, loop depth 0, count 0, freq 0, maybe hot
+;;  prev block 15, next block 1, flags: (NEW, REACHABLE, RTL, MODIFIED)
+;;  pred:       14
+(code_label 177 176 178 16 8 "" [1 uses])
+(note 178 177 179 16 [bb 16] NOTE_INSN_BASIC_BLOCK)
+(insn 179 178 182 16 (set (reg:SI 80 [ D.3912 ])
+        (const_int 0 [0])) dytestrt.c:50 89 {*movsi_internal}
+     (nil))
+(insn 182 179 186 16 (set (reg:SI 81 [ <retval> ])
+        (reg:SI 80 [ D.3912 ])) dytestrt.c:50 89 {*movsi_internal}
+     (nil))
+(insn 186 182 189 16 (set (reg/i:SI 0 ax)
+        (reg:SI 81 [ <retval> ])) dytestrt.c:51 89 {*movsi_internal}
+     (nil))
+(insn 189 186 0 16 (use (reg/i:SI 0 ax)) dytestrt.c:51 -1
+     (nil))
+;;  succ:       EXIT [100.0%]  (FALLTHRU)
+
