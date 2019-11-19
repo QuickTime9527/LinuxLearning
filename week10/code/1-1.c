@@ -20,20 +20,21 @@ int main(void)
 {
 	atexit(callback1);
 	atexit(callback2);
+	char buf[]={"fputs use full buffer!"};
 	FILE *fp;
-	char buf[]={"hello world"};
 	if((fp=fopen("test.dat","w+"))==NULL)
 	{
-		perror("failed to create file!\n");
+		perror("failed to fopen!\n");
 		return -1;
 	}	
 	if(fputs(buf,fp)==EOF)
 	{
-		perror("test message!");
+		perror("failed to fputs!\n");
 		return -1;
 	}
-	printf("test message!\n");
-	//exit(0);
+	printf("-----------running in main!---------------");
+	printf("printf use line buffer");
+	_exit(0);
 	//_exit(0);
 	//return 0;
 }	
