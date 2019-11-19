@@ -13,7 +13,7 @@ void init_daemon(void)
 		exit(0);
 	else if(child1<0)
 	{
-		perror("fail to create son process!")
+		perror("fail to create son process!");
 		exit(1);
 	}
 	setsid();
