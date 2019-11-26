@@ -12,3 +12,8 @@ void showMenu()
 	printf("6.修改文件权限\n");
 	printf("*********************************\n");
 }
+void createFile()
+{
+	FILE *fpWrite = fopen("data.txt","w");
+	
+}
