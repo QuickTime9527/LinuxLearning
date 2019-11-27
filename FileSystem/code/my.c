@@ -17,3 +17,14 @@ void createFile()
 	FILE *fpWrite = fopen("data.txt","w");
 	
 }
+
+void run()
+{
+	showMenu();
+}
+
+
+
+
+
+

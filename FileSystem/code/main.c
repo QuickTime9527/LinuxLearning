@@ -2,6 +2,6 @@
 
 int main()
 {
-	showMenu();
-	printf("look! It is work!\n");
+	run();
+	
 }

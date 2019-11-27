@@ -3,8 +3,8 @@
 int main()
 {
 	pid_t p;
-	int fd[2],rn,wn;
-	char rbuf[65537],wbuf[65537];
+	int fd[2],rn,wn,i;
+	char rbuf[1],wbuf[30];
 	memset(rbuf,0,sizeof(rbuf));
 	memset(wbuf,0,sizeof(wbuf));
 	pipe(fd);
@@ -18,27 +18,22 @@ int main()
 	{
 		close(fd[0]);
 		sprintf(rbuf,"[child %d] is running!\n",getpid());
-		while(1)
+		for(i=0;i<65536;i++)
 		{
-			wn = write(fd[1],wbuf,sizeof(wbuf));
-			printf("[child]write to pipe %d byte.\n",wn);
-			if(wn==-1)
-			{
-				printf("[child] write error.\n");
-				break;
-			}
+			write(fd[1],wbuf,sizeof(wbuf));
 		}
 		close(fd[1]);
 		exit(0);
 	}
 	else{
+		wait(NULL);
 		close(fd[1]);
 
 		while(1)
 		{
 			rn = read(fd[0],rbuf,sizeof(rbuf));
 			printf("[parent] read from pipe %d byte.Conten of pipe is %s\n",rn,rbuf);
-			if(rn==-1)
+			if(rn==0)
 			{
 				printf("[parent] write error.\n");
 				break;
