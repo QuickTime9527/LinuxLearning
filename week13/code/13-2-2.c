@@ -7,7 +7,7 @@ void ctrl_c(signo){
 }
 
 int main()
-{
+{	
 	struct sigaction act;
 	act.sa_handler = ctrl_c;
 	sigemptyset(&act.sa_mask);
