@@ -18,6 +18,7 @@ void createFile()
     //保存运行次数的文件
     FILE *fileP;
     char *fileName;      //保存在工程目录下
+    fileName=(char *)malloc(sizeof(char));
 	printf("请输入文件名：");
 	scanf("%s",fileName);
 
@@ -29,8 +30,8 @@ void createFile()
     {
         //使用“写入”方式创建文件
         fileP = fopen(fileName, "w");
-	   if(fileP!=NULL)
-		printf("创建文件成功！\n");
+
+	printf("创建文件成功！\n");
     }else
      {
 	printf("创建失败！ 文件已存在\n");
@@ -45,14 +46,17 @@ void writeFile()
 	FILE *fileP;
 	int ch;
       char *fileName;      //保存在工程目录下
+      fileName=(char *)malloc(sizeof(char));
 	printf("请输入文件名：");
 	scanf("%s",fileName);
+
 	fileP = fopen(fileName,"r"); //以read
 	if(fileP == NULL)
 	{
 		printf("该文件不存在！\n");
 		while((ch = getchar()) != '\n' && ch != EOF);
 	}else{
+		printf("1111111\n");
 		fileP = fopen(fileName,"w");
 		fprintf(fileP,"yes you are right ！");
 	}
