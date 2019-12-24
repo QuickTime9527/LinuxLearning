@@ -44,24 +44,46 @@ void createFile()
 void writeFile()
 {
 	FILE *fileP;
+	char *content;   //输入文件的内容
 	int ch;
       char *fileName;      //保存在工程目录下
+	
+	int i = 0;
       fileName=(char *)malloc(sizeof(char));
 	printf("请输入文件名：");
 	scanf("%s",fileName);
 
-	fileP = fopen(fileName,"r"); //以read
+	fileP = fopen(fileName,"w+"); //以read
 	if(fileP == NULL)
 	{
 		printf("该文件不存在！\n");
 		while((ch = getchar()) != '\n' && ch != EOF);
-	}else{
-		printf("1111111\n");
-		fileP = fopen(fileName,"w");
-		fprintf(fileP,"yes you are right ！");
 	}
+	else{
+
+		printf("请输入您想要添加的信息 :");
+		content = (char *)malloc(sizeof(char));  
+		scanf("%s",content);
+		fprintf(fileP,"%s",content);
+		printf("添加成功！\n");
+	}
+	fclose(fileP);
 }
 
+void readFile()  //创建文件
+{
+      FILE *fileP;
+	char *fileName;   //文件名
+	char *readContent;    //
+	char *Content;
+	printf("请输入文件名:");
+	fileName=(char *)malloc(sizeof(char));
+	scanf("%s",fileName);
+	FILE *fpRead=fopen(fileName,"r");
+	Content = fscanf(fpRead,"%s",readContent);
+	printf("%s\n",Content);
+
+}
 void run()
 {
 	int choice;

@@ -16,3 +16,4 @@ void showMenu();    //显示菜单
 void createFile();  //创建文件
 
 void writeFile(); //写文件
+void readFile();  //读项目
